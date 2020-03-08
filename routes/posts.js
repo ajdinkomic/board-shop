@@ -23,7 +23,7 @@ router.get('/:id', (req, res, next) => {
 
 // GET posts edit /posts/:id/edit
 router.get('/:id/edit', (req, res, next) => {
-  res.send('EDIT /posts');
+  res.send('EDIT /posts/:id');
 });
 
 // PUT posts update /posts/:id
