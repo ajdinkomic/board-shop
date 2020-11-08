@@ -1,4 +1,5 @@
 const User = require('../models/User');
+const passport = require('passport');
 
 module.exports = {
 	// postRegister is a method on object
@@ -10,6 +11,18 @@ module.exports = {
 		});
 
 		await User.register(newUser, req.body.password);
+		res.redirect('/');
+	},
+
+	postLogin(req, res, next) {
+		passport.authenticate('local', {
+			successRedirect: '/',
+			failureRedirect: '/login'
+		})(req, res, next);
+	},
+
+	getLogout(req, res, next) {
+		req.logout();
 		res.redirect('/');
 	}
 };
